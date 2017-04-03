@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: keylistener
+Bundle-Name: Key Listener
+Bundle-Version: 1.0.0-b1
+Package-Type: Web-Service
+
+Name: keylistener/keylistener.spec
+Web-Service: True
+
