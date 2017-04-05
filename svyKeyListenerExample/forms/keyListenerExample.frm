@@ -23,7 +23,7 @@ labelFor:"pw",
 location:"33,70",
 name:"pw_label",
 size:"80,30",
-text:"Password",
+text:"Search",
 transparent:true,
 typeid:7,
 uuid:"0CC63756-23B3-48D9-BC8A-07651A240BB0"
