@@ -21,7 +21,7 @@ function onShow(firstShow, event) {
 }
 
 /**
- * @private
+ * 
  * @param {String} text
  *
  * @properties={typeid:24,uuid:"2E410E9C-1633-4320-A8D4-7CE62CEDD5E7"}
@@ -36,7 +36,7 @@ function onKey(text){
  *
  * @param {JSEvent} event the event that triggered the action
  *
- * @private
+ * 
  *
  * @properties={typeid:24,uuid:"AD94D58C-F847-4677-81DD-4C94E21629A5"}
  */
