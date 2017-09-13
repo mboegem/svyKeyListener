@@ -4,8 +4,8 @@ angular.module('keyListener',['servoy'])
 	return {
 		addKeyListener: function(id,callback) {
 			$timeout(function(){
-				$('#'+id).keyup(function() {
-					$window.executeInlineScript(callback.formname,callback.script,[$('#'+id).val()]);
+				$('#'+id).keyup(function(event) {
+					$window.executeInlineScript(callback.formname,callback.script,[$('#'+id).val(), event.keyCode, event.altKey]);
 				})
 			},200);
 		}
