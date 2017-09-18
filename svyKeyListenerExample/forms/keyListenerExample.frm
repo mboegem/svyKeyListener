@@ -64,11 +64,10 @@ typeid:7,
 uuid:"7A3867EB-7FC8-439D-9D90-D5B342C91EE9"
 },
 {
-dataProviderID:"pw",
-location:"10,55",
+location:"10,69",
 name:"pw",
 placeholderText:"Enter Search...",
-size:"225,30",
+size:"353,30",
 typeid:4,
 uuid:"86C112BF-C10E-4DF8-994E-A1AF218F9792"
 },
@@ -85,12 +84,12 @@ uuid:"87C5EA89-D105-43FF-A496-49CEB4D331D6"
 },
 {
 anchors:3,
-location:"440,90",
+location:"410,96",
 onActionMethodID:"AD94D58C-F847-4677-81DD-4C94E21629A5",
 onDoubleClickMethodID:"-1",
 onRightClickMethodID:"-1",
-size:"160,30",
-text:"Add Listener",
+size:"225,30",
+text:"Add Listener to search field",
 typeid:7,
 uuid:"8C3FB17D-C8BE-4145-8413-3DF9CBA6A02C"
 },
@@ -125,7 +124,7 @@ uuid:"A8C7C5EE-35C8-48FD-8382-A856485D98D4"
 anchors:11,
 displaysTags:true,
 location:"10,100",
-size:"580,26",
+size:"353,26",
 styleClass:"info",
 text:"Matching order records: <b>%%count_orders%%<\/b>",
 transparent:true,

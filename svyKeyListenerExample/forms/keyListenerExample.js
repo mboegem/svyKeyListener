@@ -6,21 +6,6 @@
 var filterText = '';
 
 /**
- * Callback method for when form is shown.
- *
- * @param {Boolean} firstShow form is shown first time after load
- * @param {JSEvent} event the event that triggered the action
- *
- * @private
- *
- * @properties={typeid:24,uuid:"28FFF029-484C-42D5-BFC2-535DF7518815"}
- */
-function onShow(firstShow, event) {
-	if(firstShow)
-		plugins.keyListener.addKeyListener(elements.pw,onKey);
-}
-
-/**
  * 
  * @param {String} text
  *
