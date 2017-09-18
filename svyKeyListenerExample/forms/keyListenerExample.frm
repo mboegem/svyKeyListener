@@ -133,7 +133,6 @@ uuid:"CAD9126C-8360-4190-A086-34ADC596CC86"
 }
 ],
 name:"keyListenerExample",
-onShowMethodID:"28FFF029-484C-42D5-BFC2-535DF7518815",
 scrollbars:32,
 showInMenu:true,
 typeid:3,
