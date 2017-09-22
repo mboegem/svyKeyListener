@@ -125,6 +125,7 @@ uuid:"A8C7C5EE-35C8-48FD-8382-A856485D98D4"
 anchors:11,
 displaysTags:true,
 location:"10,100",
+name:"matchingCount",
 size:"353,26",
 styleClass:"info",
 text:"Matching order records: <b>%%count_orders%%<\/b>",
