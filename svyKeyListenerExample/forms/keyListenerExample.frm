@@ -135,6 +135,7 @@ uuid:"CAD9126C-8360-4190-A086-34ADC596CC86"
 }
 ],
 name:"keyListenerExample",
+namedFoundSet:"separate",
 scrollbars:32,
 showInMenu:true,
 typeid:3,
