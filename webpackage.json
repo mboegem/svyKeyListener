@@ -1,5 +1,5 @@
 {
-    "name":"svykeylistener",
+    "name":"keylistener",
     "displayName":"Key Listener",
     "packageType": "Web-Service",
     "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/OOjs_UI_icon_keyboard-ltr.svg/2000px-OOjs_UI_icon_keyboard-ltr.svg.png",
