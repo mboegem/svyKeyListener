@@ -2,7 +2,7 @@
 	"name": "keyListener",
 	"displayName": "keyListener",
 	"version": 1,
- 	"definition": "keylistener/keylistener/keylistener.js",
+ 	"definition": "svykeylistener/keylistener/keylistener.js",
 	"libraries": [],
 	"model":
 	{
