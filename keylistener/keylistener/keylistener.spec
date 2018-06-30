@@ -23,6 +23,24 @@
 					"type":"function"
 		        }
 			]
+		},
+			"addKeyListenerInterval": 
+	   	{
+	    	"parameters":
+	    	[
+		    	{
+					"name":"elementId",
+					"type":"runtimecomponent"
+				},
+				{
+					"name":"callback",
+					"type":"function"
+		        },		        
+				{
+					"name":"interval",
+					"type":"number"
+		        }
+			]
 		}
  	}
 }
