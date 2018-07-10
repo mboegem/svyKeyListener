@@ -6,7 +6,7 @@
 	"libraries": [],
 	"model":
 	{
-    	"text": "string"
+    	"callbacks" : {"type":"callback[]", "pushToServer": "deep", "elementConfig": {"pushToServer": "deep"} ,"initialValue": [], "tags": { "scope" :"private" }}
  	},
  	"api":
  	{
@@ -15,8 +15,8 @@
 	    	"parameters":
 	    	[
 		    	{
-					"name":"elementId",
-					"type":"runtimecomponent"
+					"name":"callbackKey",
+					"type":"string"
 				},
 				{
 					"name":"callback",
@@ -24,23 +24,22 @@
 		        }
 			]
 		},
-			"addKeyListenerInterval": 
-	   	{
-	    	"parameters":
-	    	[
-		    	{
-					"name":"elementId",
-					"type":"runtimecomponent"
-				},
-				{
-					"name":"callback",
-					"type":"function"
-		        },		        
-				{
-					"name":"interval",
-					"type":"number"
-		        }
-			]
+		"getCallback":
+		{
+			"returns":"function",
+			"parameters":
+		    	[
+			    	{
+						"name":"elementId",
+						"type":"runtimecomponent"
+					}
+				]
 		}
- 	}
+ 	},
+ 	"types": {
+	  "callback": {
+	  		"callbackKey": "string",
+	  		"callback": "function"
+	  }
+	}
 }
