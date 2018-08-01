@@ -17,15 +17,15 @@ angular.module('keyListener',['servoy'])
 			return null;
 		}
 	}
-}).directive('keylistener', function($window, $services, keyListener) {  
+}).directive('keylistener', function($window, $services, keyListener, $utils) {  
     return {
       restrict: 'A',
       controller: function($scope, $element, $attrs) {
-    	  $element.keyup(function() {
+    	  $element.keyup(function(event) {
     		  var callback = keyListener.getCallback($attrs.keylistener);
     		  if (callback)
     		  {
-    			  $window.executeInlineScript(callback.formname, callback.script,[$element.val()]);
+    			  $window.executeInlineScript(callback.formname, callback.script,[$element.val(), $utils.createJSEvent(event, "keyup")]);
     		  }
 			})   	  
       }
