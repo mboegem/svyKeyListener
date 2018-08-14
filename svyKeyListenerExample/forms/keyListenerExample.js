@@ -26,7 +26,7 @@ function onKey(text){
  * @properties={typeid:24,uuid:"AD94D58C-F847-4677-81DD-4C94E21629A5"}
  */
 function addListener(event) {
-	plugins.keyListener.addKeyListener(elements.pw,onKey);
+    plugins.keyListener.addKeyListener('searchKeyListener',onKey);
 }
 
 /**

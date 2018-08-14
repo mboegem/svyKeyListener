@@ -64,6 +64,9 @@ typeid:7,
 uuid:"7A3867EB-7FC8-439D-9D90-D5B342C91EE9"
 },
 {
+customProperties:"attributes:{\
+keylistener:\"searchKeyListener\"\
+}",
 location:"10,69",
 name:"pw",
 placeholderText:"Enter Search...",
