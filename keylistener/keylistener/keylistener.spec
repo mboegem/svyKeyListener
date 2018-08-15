@@ -21,6 +21,10 @@
 				{
 					"name":"callback",
 					"type":"function"
+		        },
+		        {
+					"name":"clearCB",
+					"type":"boolean"
 		        }
 			]
 		},
