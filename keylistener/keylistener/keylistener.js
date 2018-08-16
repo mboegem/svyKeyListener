@@ -24,7 +24,7 @@ angular.module('keyListener', ['servoy']).factory("keyListener", function($servi
 				$element.keyup(function(event) {
 					var callback = keyListener.getCallback($attrs.keylistener);
 					if (callback) {
-						$window.executeInlineScript(callback.formname, callback.script, [$element.val(), $utils.createJSEvent(event, "keyup")]);
+						$window.executeInlineScript(callback.formname, callback.script, [$utils.createJSEvent(event, "keyup"), $element.val(), event.keyCode, event.altKey]);
 					}
 				})
 			}
