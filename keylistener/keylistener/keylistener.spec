@@ -24,7 +24,8 @@
 		        },
 		        {
 					"name":"clearCB",
-					"type":"boolean"
+					"type":"boolean",
+					"optional": true
 		        }
 			]
 		},
