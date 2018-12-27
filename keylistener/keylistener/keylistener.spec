@@ -38,6 +38,17 @@
 						"type":"runtimecomponent"
 					}
 				]
+		},
+		"removeKeyListener":
+		{
+			"returns":"boolean",
+			"parameters":
+		    	[
+			    	{
+						"name":"elementId",
+						"type":"runtimecomponent"
+					}
+				]
 		}
  	},
  	"types": {
