@@ -1,4 +1,4 @@
-angular.module('keyListener', ['servoy']).factory("keyListener", function($services, $window, $timeout) {
+angular.module('keyListener', ['servoy']).factory("keyListener", function($services, $window, $timeout, $log) {
 		var scope = $services.getServiceScope('keyListener');
 		
 		
@@ -36,14 +36,28 @@ angular.module('keyListener', ['servoy']).factory("keyListener", function($servi
 				return removeKeyListener(callbackKey);
 			}
 		}
-	}).directive('keylistener', function($window, $services, keyListener, $utils) {
+	}).directive('keylistener', function($window, $services, keyListener, $utils, $log) {
 		return {
 			restrict: 'A',
 			controller: function($scope, $element, $attrs) {
 				$element.keyup(function(event) {
 					var callback = keyListener.getCallback($attrs.keylistener);
 					if (callback) {
-						$window.executeInlineScript(callback.formname, callback.script, [$utils.createJSEvent(event, "keyup"), $element.val(), event.keyCode, event.altKey]);
+						var input;
+						var value;
+						if ($element.prop("tagName") == "INPUT") {
+							input = $element;
+						} else {
+							var inputField = $element.find('input');
+							if (inputField.length == 1) {
+								input = inputField
+							} else {
+								$log.error("Cannot resolve input field for keylistener " + $attrs.keylistener);
+								input = $element;
+							}
+						}
+
+						$window.executeInlineScript(callback.formname, callback.script, [$utils.createJSEvent(event, "keyup"), input.val(), event.keyCode, event.altKey]);
 					}
 				})
 			}
