@@ -26,7 +26,7 @@ angular.module('keyListener', ['servoy']).factory("keyListener", function($servi
 				scope.model.callbacks.push({ 'callbackKey': callbackKey, 'callback': callback });
 			},
 			getCallback: function(callbackKey) {
-				for (var i = 0; i < scope.model.callbacks.length; i++) {
+				for (var i = 0; scope.model.callbacks && i < scope.model.callbacks.length; i++) {
 					var c = scope.model.callbacks[i];
 					if (c.callbackKey == callbackKey) return c.callback;
 				}

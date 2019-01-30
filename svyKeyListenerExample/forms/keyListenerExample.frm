@@ -64,11 +64,31 @@ typeid:7,
 uuid:"7A3867EB-7FC8-439D-9D90-D5B342C91EE9"
 },
 {
+anchors:3,
+json:{
+anchors:3,
+faclass:"fa fa-trash text-danger fa-lg",
+location:{
+x:608,
+y:98
+},
+onActionMethodID:"505CFD35-848B-4ECC-B0AF-9F2BC5DE4D04",
+toolTipText:"Remove Listener from search field"
+},
+location:"608,98",
+name:"fa",
+typeName:"servoyextra-fontawesome",
+typeid:47,
+uuid:"7BC7CD92-99B2-4600-837E-D923104A2570"
+},
+{
 customProperties:"attributes:{\
 keylistener:\"searchKeyListener\"\
 }",
+dataProviderID:"filterText",
 location:"10,69",
 name:"pw",
+onActionMethodID:"35582939-EB49-47E6-97F1-E55C68136361",
 placeholderText:"Enter Search...",
 size:"353,30",
 typeid:4,
@@ -92,7 +112,7 @@ name:"addListener",
 onActionMethodID:"AD94D58C-F847-4677-81DD-4C94E21629A5",
 onDoubleClickMethodID:"-1",
 onRightClickMethodID:"-1",
-size:"225,30",
+size:"191,30",
 text:"Add Listener to search field",
 typeid:7,
 uuid:"8C3FB17D-C8BE-4145-8413-3DF9CBA6A02C"

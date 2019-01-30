@@ -16,7 +16,7 @@ function getName() {
 * @properties={typeid:24,uuid:"53D129AB-7F81-467D-9AFC-9C470554F747"}
 */
 function getDescription() {
-	return 'Borwser service to send keystroles to the server';
+	return 'Browser service to send keystroles to the server';
 }
 
 /**
@@ -66,9 +66,10 @@ function getMoreInfo() {
 * @return {Array<String>} code lines
 *
 * @properties={typeid:24,uuid:"C6811C2F-ECBD-4E56-8FCA-C785D7B0F18E"}
+* @AllowToRunInFind
 */
 function getSampleCode() {
-	return printMethodCode(forms.keyListenerExample.addListener).concat(printMethodCode(forms.keyListenerExample.onKey))
+	return printMethodCode(forms.keyListenerExample.addListener).concat(printMethodCode(forms.keyListenerExample.onKey)).concat(printMethodCode(forms.keyListenerExample.search)).concat(printMethodCode(forms.keyListenerExample.removeListener))
 }
 
 /**

@@ -35,8 +35,8 @@
 			"parameters":
 		    	[
 			    	{
-						"name":"elementId",
-						"type":"runtimecomponent"
+						"name":"callbackKey",
+						"type":"string"
 					}
 				]
 		},
@@ -46,8 +46,8 @@
 			"parameters":
 		    	[
 			    	{
-						"name":"elementId",
-						"type":"runtimecomponent"
+						"name":"callbackKey",
+						"type":"string"
 					}
 				]
 		}

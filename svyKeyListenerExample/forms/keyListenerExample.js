@@ -6,13 +6,12 @@
 var filterText = '';
 
 /**
- * 
+ * @param {JSEvent} event
  * @param {String} text
  *
  * @properties={typeid:24,uuid:"2E410E9C-1633-4320-A8D4-7CE62CEDD5E7"}
  */
-function onKey(text){
-	application.output('Callback: ' + text);
+function onKey(event, text){
 	search(text);
 }
 
@@ -26,7 +25,19 @@ function onKey(text){
  * @properties={typeid:24,uuid:"AD94D58C-F847-4677-81DD-4C94E21629A5"}
  */
 function addListener(event) {
-    plugins.keyListener.addKeyListener('searchKeyListener',onKey);
+	// NOTE: using the form editor we have added an attribute 'keylistener' with value 'searchKeyListener' to the search element 'pw'.
+	// Is possible to add any attribute to any element as name-value;
+	// the keyListener plugin will look for elements having a 'keylistener' attribute with value = to the callbackKey
+    plugins.keyListener.addKeyListener('searchKeyListener', onKey);
+}
+
+/**
+ * @param {JSEvent} event
+ *
+ * @properties={typeid:24,uuid:"505CFD35-848B-4ECC-B0AF-9F2BC5DE4D04"}
+ */
+function removeListener(event) {
+	plugins.keyListener.removeKeyListener('searchKeyListener');
 }
 
 /**
@@ -55,4 +66,17 @@ function search(value){
 	
 	
 	foundset.loadRecords(q);
+}
+
+/**
+ * Perform the element default action.
+ *
+ * @param {JSEvent} event the event that triggered the action
+ *
+ * @protected
+ *
+ * @properties={typeid:24,uuid:"35582939-EB49-47E6-97F1-E55C68136361"}
+ */
+function onAction(event) {
+	search(filterText);
 }
