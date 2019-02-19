@@ -11,7 +11,7 @@ var filterText = '';
  *
  * @properties={typeid:24,uuid:"2E410E9C-1633-4320-A8D4-7CE62CEDD5E7"}
  */
-function onKey(event, text){
+function onKey(text, event){
 	search(text);
 }
 
