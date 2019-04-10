@@ -45,6 +45,7 @@ angular.module('keyListener', ['servoy']).factory("keyListener", function($servi
 					if (callback) {
 						var input;
 						var value;
+						var capsLockEnabled = false;
 						if ($element.prop("tagName") == "INPUT") {
 							input = $element;
 						} else {
@@ -56,7 +57,17 @@ angular.module('keyListener', ['servoy']).factory("keyListener", function($servi
 								input = $element;
 							}
 						}
-						$window.executeInlineScript(callback.formname, callback.script, [input.val(), $utils.createJSEvent(event, "keyup"), event.keyCode, event.altKey]);
+						
+						if(event.getModifierState) {
+							capsLockEnabled = event.getModifierState("CapsLock")
+						} else {
+							var oriEvent = event.originalEvent;
+							if(oriEvent.getModifierState) {
+								capsLockEnabled = oriEvent.getModifierState("CapsLock");
+							}
+						}
+					    var jsEvent = $utils.createJSEvent(event, 'action'); 
+						$window.executeInlineScript(callback.formname, callback.script, [input.val(), jsEvent, event.keyCode, event.altKey, event.ctrlKey, event.shiftKey, capsLockEnabled]);
 					}
 				})
 			}
