@@ -29,17 +29,6 @@
 		        }
 			]
 		},
-		"getCallback":
-		{
-			"returns":"function",
-			"parameters":
-		    	[
-			    	{
-						"name":"callbackKey",
-						"type":"string"
-					}
-				]
-		},
 		"removeKeyListener":
 		{
 			"returns":"boolean",
