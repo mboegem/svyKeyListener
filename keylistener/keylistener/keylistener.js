@@ -41,6 +41,17 @@ angular.module('keyListener', ['servoy']).factory("keyListener", function($servi
 			restrict: 'A',
 			controller: function($scope, $element, $attrs) {
 				$element.keyup(function(event) {
+					handleKeyEvent(event);
+				}),
+				$element.keydown(function(event) {
+					if (event.keyCode === 20) {
+						// handle caps lock keyevent exceptions:
+						// ON in Chrome, ON/OFF in Firefox
+						handleKeyEvent(event);
+					}
+				})
+				
+				function handleKeyEvent(event) {
 					var callback = keyListener.getCallback($attrs.keylistener);
 					if (callback) {
 						var input;
@@ -69,7 +80,7 @@ angular.module('keyListener', ['servoy']).factory("keyListener", function($servi
 					    var jsEvent = $utils.createJSEvent(event, 'action'); 
 						$window.executeInlineScript(callback.formname, callback.script, [input.val(), jsEvent, event.keyCode, event.altKey, event.ctrlKey, event.shiftKey, capsLockEnabled]);
 					}
-				})
+				}
 			}
 		};
 	})
