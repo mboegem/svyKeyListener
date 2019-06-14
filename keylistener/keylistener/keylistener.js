@@ -44,9 +44,11 @@ angular.module('keyListener', ['servoy']).factory("keyListener", function($servi
 					handleKeyEvent(event);
 				}),
 				$element.keydown(function(event) {
-					if (event.keyCode === 20) {
-						// handle caps lock keyevent exceptions:
-						// ON in Chrome, ON/OFF in Firefox
+					if (event.keyCode === 20 && navigator.appVersion.indexOf("Mac")!=-1) {
+						// handle caps lock keyevent exceptions on Mac:
+						// keydown is triggered in case of toggle to ON in Safari/Chrome, ON/OFF in Firefox
+						// Windows does handle both ON/OFF in the keyup event
+						
 						handleKeyEvent(event);
 					}
 				})
