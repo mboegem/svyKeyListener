@@ -41,6 +41,19 @@ angular.module('keyListener', ['servoy']).factory("keyListener", function($servi
 			restrict: 'A',
 			controller: function($scope, $element, $attrs) {
 				$element.keyup(function(event) {
+					handleKeyEvent(event);
+				}),
+				$element.keydown(function(event) {
+					if (event.keyCode === 20 && navigator.appVersion.indexOf("Mac")!=-1) {
+						// handle caps lock keyevent exceptions on Mac:
+						// keydown is triggered in case of toggle to ON in Safari/Chrome, ON/OFF in Firefox
+						// Windows does handle both ON/OFF in the keyup event
+						
+						handleKeyEvent(event);
+					}
+				})
+				
+				function handleKeyEvent(event) {
 					var callback = keyListener.getCallback($attrs.keylistener);
 					if (callback) {
 						var input;
@@ -69,7 +82,7 @@ angular.module('keyListener', ['servoy']).factory("keyListener", function($servi
 					    var jsEvent = $utils.createJSEvent(event, 'action'); 
 						$window.executeInlineScript(callback.formname, callback.script, [input.val(), jsEvent, event.keyCode, event.altKey, event.ctrlKey, event.shiftKey, capsLockEnabled]);
 					}
-				})
+				}
 			}
 		};
 	})
