@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-SymbolicName: svykeylistener
 Bundle-Name: Key Listener
-Bundle-Version: 1.2.1
+Bundle-Version: 1.2.2
 Package-Type: Web-Service
 
 Name: keylistener/keylistener.spec
