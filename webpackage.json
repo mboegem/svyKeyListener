@@ -2,7 +2,7 @@
     "name":"svykeylistener",
     "displayName":"Key Listener",
     "packageType": "Web-Service",
-    "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/OOjs_UI_icon_keyboard-ltr.svg/2000px-OOjs_UI_icon_keyboard-ltr.svg.png",
+    "icon": "https://raw.githubusercontent.com/Servoy/svyKeyListener/master/icon.png",
     "description": "A service to send key strokes to a server-side handler",
     "wikiUrl": "https://github.com/Servoy/svyKeyListener/wiki",
     "sourceUrl" : "https://github.com/Servoy/svyKeyListener",
