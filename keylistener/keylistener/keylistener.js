@@ -23,7 +23,7 @@ angular.module('keyListener', ['servoy']).factory("keyListener", function($servi
 				}
 				if (!scope.model.callbacks) scope.model.callbacks = [];
 				if (!delay) {
-					delay = 5000;
+					delay = 2500;
 				}
 				scope.model.callbacks.push({ 'callbackKey': callbackKey, 'callback': callback, 'delay': delay, 'restrictPattern': restrictPattern, 'isRunning': false });
 			},
@@ -56,6 +56,21 @@ angular.module('keyListener', ['servoy']).factory("keyListener", function($servi
 
 				function handleKeyEvent(event) {
 					var cb = keyListener.getCallback($attrs.keylistener);
+					var restrictPattern = cb.restrictPattern;
+					//if there is a restriction on the pattern, remove last typed character in the event if not matching.
+					if (restrictPattern) {
+						var reg = new RegExp(cb.restrictPattern);
+						console.log(reg + ' : ' + reg.test(event.currentTarget.value))
+						event.currentTarget.value = event.currentTarget.value.replaceAll(reg, '');
+						// needed as some browsers will use autocomplete
+						setTimeout(function() {
+								event.currentTarget.value = event.currentTarget.value.replaceAll(reg, '');
+							}, 500);
+
+						setTimeout(function() {
+								event.currentTarget.value = event.currentTarget.value.replaceAll(reg, '');
+							}, 1000);
+					}
 					var callback = cb.callback
 					if (callback) {
 						if (callback.isRunning) return;
@@ -87,20 +102,7 @@ angular.module('keyListener', ['servoy']).factory("keyListener", function($servi
 						setTimeout(function() {
 								$window.executeInlineScript(callback.formname, callback.script, [input.val(), jsEvent, event.keyCode, event.altKey, event.ctrlKey, event.shiftKey, capsLockEnabled]);
 								callback.isRunning = false;
-								var restrictPattern = cb.restrictPattern;
-								//if there is a restriction on the pattern, remove last typed character in the event if not matching.
-								if (restrictPattern) {
-									var reg = new RegExp(cb.restrictPattern);
-									event.currentTarget.value = event.currentTarget.value.replaceAll(reg, '');
-									// needed as some browsers will use autocomplete
-									setTimeout(function() {
-											event.currentTarget.value = event.currentTarget.value.replaceAll(reg, '');
-										}, 500)
-									setTimeout(function() {
-											event.currentTarget.value = event.currentTarget.value.replaceAll(reg, '');
-										}, 1000)
-								}
-							}, callback.delay)
+							}, cb.delay)
 					}
 				}
 			}
