@@ -32,7 +32,11 @@
 					"type":"int",
 					"optional": true
 				},{
-					"name":"restrictPattern",
+					"name":"regexPattern",
+					"type":"string",
+					"optional": true
+				},{
+					"name":"regexReplacement",
 					"type":"string",
 					"optional": true
 				}
@@ -56,7 +60,8 @@
 	  		"callback": "function",
 	  		"isRunning": "int",
 	  		"delay": "int",
-	  		"restrictPattern": "string"
+	  		"regexPattern": "string",
+	  		"regexReplacement":"string"
 	  }
 	}
 }

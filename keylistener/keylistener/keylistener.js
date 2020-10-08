@@ -16,16 +16,17 @@ angular.module('keyListener', ['servoy']).factory("keyListener", function($servi
 		}
 
 		return {
-			addKeyListener: function(callbackKey, callback, clearCB, delay, restrictPattern) {
+			addKeyListener: function(callbackKey, callback, clearCB, delay, regexPattern, regexReplacement) {
 				if (!scope.model.callbacks) scope.model.callbacks = [];
 				if (clearCB) {
 					removeKeyListener(callbackKey);
 				}
 				if (!scope.model.callbacks) scope.model.callbacks = [];
 				if (!delay) {
-					delay = 2500;
+					delay = 1000;
 				}
-				scope.model.callbacks.push({ 'callbackKey': callbackKey, 'callback': callback, 'delay': delay, 'restrictPattern': restrictPattern, 'isRunning': false });
+
+				scope.model.callbacks.push({ 'callbackKey': callbackKey, 'callback': callback, 'delay': delay, 'regexPattern': regexPattern, "regexReplacement": regexReplacement, 'isRunning': false });
 			},
 			getCallback: function(callbackKey) {
 				for (var i = 0; scope.model.callbacks && i < scope.model.callbacks.length; i++) {
@@ -55,21 +56,27 @@ angular.module('keyListener', ['servoy']).factory("keyListener", function($servi
 				})
 
 				function handleKeyEvent(event) {
+					function replaceTargetValue() {
+						var s = event.key;
+						if (!s) return;
+						console.log('key : ' + s);
+						console.log('regexPattern : ' + regexPattern);						
+						event.target.value = event.target.value.replace(regexPattern, regexReplacement);
+					}
 					var cb = keyListener.getCallback($attrs.keylistener);
-					var restrictPattern = cb.restrictPattern;
+					if (!cb) return;
+					var regexPattern = cb.regexPattern;
+					var regexReplacement = cb.regexReplacement;
 					//if there is a restriction on the pattern, remove last typed character in the event if not matching.
-					if (restrictPattern) {
-						var reg = new RegExp(cb.restrictPattern);
-						console.log(reg + ' : ' + reg.test(event.currentTarget.value))
-						event.currentTarget.value = event.currentTarget.value.replaceAll(reg, '');
+					if (regexPattern) {
+						regexPattern = new RegExp(cb.regexPattern, 'g');
+						replaceTargetValue();
+						return;
 						// needed as some browsers will use autocomplete
-						setTimeout(function() {
-								event.currentTarget.value = event.currentTarget.value.replaceAll(reg, '');
-							}, 500);
-
-						setTimeout(function() {
-								event.currentTarget.value = event.currentTarget.value.replaceAll(reg, '');
-							}, 1000);
+						setTimeout(replaceTargetValue, 500);
+						setTimeout(replaceTargetValue, 750);
+						setTimeout(replaceTargetValue, 1000);
+						return;
 					}
 					var callback = cb.callback
 					if (callback) {
