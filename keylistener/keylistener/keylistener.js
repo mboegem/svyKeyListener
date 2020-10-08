@@ -46,6 +46,9 @@ angular.module('keyListener', ['servoy']).factory("keyListener", function($servi
 				$element.keyup(function(event) {
 					handleKeyEvent(event);
 				}),
+				$element.keypress(function(event) {
+					handleKeyEvent(event);
+				}),
 				$element.keydown(function(event) {
 					if (event.keyCode === 20 && navigator.appVersion.indexOf("Mac") != -1) {
 						// handle caps lock keyevent exceptions on Mac:
@@ -56,13 +59,6 @@ angular.module('keyListener', ['servoy']).factory("keyListener", function($servi
 				})
 
 				function handleKeyEvent(event) {
-					function replaceTargetValue() {
-						var s = event.key;
-						if (!s) return;
-						console.log('key : ' + s);
-						console.log('regexPattern : ' + regexPattern);						
-						event.target.value = event.target.value.replace(regexPattern, regexReplacement);
-					}
 					var cb = keyListener.getCallback($attrs.keylistener);
 					if (!cb) return;
 					var regexPattern = cb.regexPattern;
@@ -70,20 +66,18 @@ angular.module('keyListener', ['servoy']).factory("keyListener", function($servi
 					//if there is a restriction on the pattern, remove last typed character in the event if not matching.
 					if (regexPattern) {
 						regexPattern = new RegExp(cb.regexPattern, 'g');
-						replaceTargetValue();
-						return;
-						// needed as some browsers will use autocomplete
-						setTimeout(replaceTargetValue, 500);
-						setTimeout(replaceTargetValue, 750);
-						setTimeout(replaceTargetValue, 1000);
-						return;
+						var s = event.key;
+						if (!s) return;
+						var tmp = event.target.value
+						event.target.value = event.target.value.replace(regexPattern, regexReplacement);
+						//if replace was done, don't fire event.
+						if (tmp.length != event.target.value.length) return;
 					}
 					var callback = cb.callback
 					if (callback) {
 						if (callback.isRunning) return;
 						callback.isRunning = true;
 						var input;
-						var value;
 						var capsLockEnabled = false;
 						if ($element.prop("tagName") == "INPUT") {
 							input = $element;
