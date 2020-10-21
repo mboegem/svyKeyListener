@@ -5,7 +5,7 @@
  	"definition": "svykeylistener/keylistener/keylistener.js",
 	"libraries": [],
 	"model":
-	{
+	{		
     	"callbacks" : {"type":"callback[]", "pushToServer": "deep", "elementConfig": {"pushToServer": "deep"} ,"initialValue": [], "tags": { "scope" :"private" }}
  	},
  	"api":
@@ -26,7 +26,20 @@
 					"name":"clearCB",
 					"type":"boolean",
 					"optional": true
-		        }
+		        },
+		        {
+					"name":"delay",
+					"type":"int",
+					"optional": true
+				},{
+					"name":"regexPattern",
+					"type":"string",
+					"optional": true
+				},{
+					"name":"regexReplacement",
+					"type":"string",
+					"optional": true
+				}
 			]
 		},
 		"removeKeyListener":
@@ -44,7 +57,11 @@
  	"types": {
 	  "callback": {
 	  		"callbackKey": "string",
-	  		"callback": "function"
+	  		"callback": "function",
+	  		"isRunning": "int",
+	  		"delay": "int",
+	  		"regexPattern": "string",
+	  		"regexReplacement":"string"
 	  }
 	}
 }
