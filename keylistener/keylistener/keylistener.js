@@ -63,10 +63,10 @@ angular.module('keyListener', ['servoy']).factory("keyListener", function($servi
 					callback.isRunning = true;
 					var input;
 					var capsLockEnabled = false;
-					if ($element.prop("tagName") == "INPUT") {
+					if ($element.prop("tagName") == "INPUT" || $element.prop("tagName") == 'TEXTAREA') {
 						input = $element;
 					} else {
-						var inputField = $element.find('input');
+						var inputField = $element.find('input, textarea');
 						if (inputField.length == 1) {
 							input = inputField
 						} else {
